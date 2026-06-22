@@ -1,0 +1,295 @@
+backend:
+  name: github
+  # IMPORTANT: replace this with your actual GitHub "username/repo-name"
+  # e.g. pamala123/phook-theory-site
+  repo: REPLACE-WITH-your-github-username/phook-theory-site
+  branch: main
+
+media_folder: "src/images"
+public_folder: "/images"
+
+collections:
+  - name: "site"
+    label: "Site Content"
+    files:
+      - file: "src/_data/site.json"
+        name: "site"
+        label: "Phook Theory — All Page Content"
+        fields:
+          - label: "Site Meta"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Browser Tab Title", name: "title", widget: "string" }
+              - { label: "Brand Name", name: "brandName", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+
+          - label: "Navigation Bar"
+            name: "nav"
+            widget: "object"
+            fields:
+              - label: "Menu Links"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Link (e.g. #about)", name: "href", widget: "string" }
+              - { label: "Button Label", name: "ctaLabel", widget: "string" }
+              - { label: "Button Link", name: "ctaHref", widget: "string" }
+
+          - label: "Hero (top of page)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Small Text Above Title", name: "eyebrow", widget: "string" }
+              - { label: "Title — Line 1", name: "titleLine1", widget: "string" }
+              - { label: "Title — Line 2 (orange)", name: "titleLine2", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Primary Button Label", name: "primaryBtnLabel", widget: "string" }
+              - { label: "Primary Button Link", name: "primaryBtnHref", widget: "string" }
+              - { label: "Secondary Button Label", name: "ghostBtnLabel", widget: "string" }
+              - { label: "Secondary Button Link", name: "ghostBtnHref", widget: "string" }
+
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Paragraph 1", name: "body1", widget: "text" }
+              - { label: "Pull Quote", name: "pullQuote", widget: "string" }
+              - { label: "Paragraph 2", name: "body2", widget: "text" }
+              - { label: "Button Label", name: "ctaLabel", widget: "string" }
+              - { label: "Button Link", name: "ctaHref", widget: "string" }
+              - label: "Stat Cards"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Label", name: "label", widget: "string" }
+              - { label: "Law Box — Small Label", name: "lawBoxLabel", widget: "string" }
+              - { label: "Law Box — Quote", name: "lawBoxQuote", widget: "string" }
+              - { label: "Law Box — Body", name: "lawBoxBody", widget: "text" }
+
+          - label: "Shop Section"
+            name: "shop"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - label: "Books"
+                name: "books"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Category Tag", name: "tag", widget: "string" }
+                  - { label: "Price", name: "price", widget: "string" }
+                  - label: "Cover Color"
+                    name: "colorClass"
+                    widget: "select"
+                    options:
+                      - { label: "Navy", value: "bc1" }
+                      - { label: "Copper", value: "bc2" }
+                      - { label: "Gold", value: "bc3" }
+                      - { label: "Jade", value: "bc4" }
+                      - { label: "Royal Blue", value: "bc5" }
+
+          - label: "Teachings Section (3 cards)"
+            name: "teachings"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Intro Body", name: "body", widget: "text" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Card Color Style", name: "cardClass", widget: "select", options: ["tc1", "tc2", "tc3"] }
+                  - { label: "Icon (emoji)", name: "icon", widget: "string" }
+                  - { label: "Small Label", name: "label", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+                  - { label: "Link Text", name: "linkLabel", widget: "string" }
+                  - { label: "Link Target", name: "linkHref", widget: "string" }
+
+          - label: "The Phook Principles Section"
+            name: "principles"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Intro Body", name: "body", widget: "text" }
+              - label: "Principles List"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Number", name: "num", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+              - { label: "Button Label", name: "ctaLabel", widget: "string" }
+              - { label: "Button Link", name: "ctaHref", widget: "string" }
+
+          - label: "Crystal Phook Clearing Section"
+            name: "crystal"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Intro Body", name: "body", widget: "text" }
+              - label: "Crystals"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Emoji", name: "emoji", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Primary Button Label", name: "primaryBtnLabel", widget: "string" }
+              - { label: "Primary Button Link", name: "primaryBtnHref", widget: "string" }
+              - { label: "Secondary Button Label", name: "ghostBtnLabel", widget: "string" }
+              - { label: "Secondary Button Link", name: "ghostBtnHref", widget: "string" }
+
+          - label: "Phook the Drama Section"
+            name: "drama"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Intro Body", name: "body", widget: "text" }
+              - label: "Modules"
+                name: "modules"
+                widget: "list"
+                fields:
+                  - { label: "Module Number (e.g. Module 01)", name: "num", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+              - { label: "Primary Button Label", name: "primaryBtnLabel", widget: "string" }
+              - { label: "Primary Button Link", name: "primaryBtnHref", widget: "string" }
+              - { label: "Secondary Button Label", name: "ghostBtnLabel", widget: "string" }
+              - { label: "Secondary Button Link", name: "ghostBtnHref", widget: "string" }
+
+          - label: "App Section"
+            name: "app"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Intro Body", name: "body", widget: "text" }
+              - label: "Feature List"
+                name: "features"
+                widget: "list"
+                fields:
+                  - { label: "Dot Color", name: "dotClass", widget: "select", options: ["fd-copper", "fd-jade", "fd-sky"] }
+                  - { label: "Text", name: "text", widget: "string" }
+              - { label: "Waitlist Email Placeholder", name: "waitlistPlaceholder", widget: "string" }
+              - { label: "Waitlist Button Label", name: "waitlistBtnLabel", widget: "string" }
+              - label: "Phone Mockup"
+                name: "mockup"
+                widget: "object"
+                fields:
+                  - { label: "Ego Badge Text (e.g. Ego: 72%)", name: "egoBadge", widget: "string" }
+                  - { label: "Meter Label", name: "meterLabel", widget: "string" }
+                  - { label: "Meter Fill (e.g. 72%)", name: "meterFillPct", widget: "string" }
+                  - { label: "Meter Result Text", name: "meterResult", widget: "string" }
+                  - { label: "Daily Phook Tag", name: "dailyTag", widget: "string" }
+                  - { label: "Daily Phook Text", name: "dailyText", widget: "string" }
+
+          - label: "Phook It Series Section"
+            name: "series"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Type (e.g. eBook, Podcast · Free)", name: "type", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Price / Detail", name: "price", widget: "string" }
+              - label: "Bundle Offer"
+                name: "bundle"
+                widget: "object"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Subtitle", name: "sub", widget: "string" }
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Savings Text", name: "save", widget: "string" }
+                  - { label: "Button Label", name: "ctaLabel", widget: "string" }
+                  - { label: "Button Link", name: "ctaHref", widget: "string" }
+
+          - label: "Testimonials Section"
+            name: "testimonials"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - label: "Testimonials"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Quote", name: "quote", widget: "text" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Title / Location", name: "title", widget: "string" }
+
+          - label: "Affiliate Section"
+            name: "affiliate"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Intro Body", name: "body", widget: "text" }
+              - label: "Tiers"
+                name: "tiers"
+                widget: "list"
+                fields:
+                  - { label: "Card Style", name: "cardClass", widget: "select", options: ["tier-standard", "tier-featured"] }
+                  - { label: "Icon Background", name: "iconClass", widget: "select", options: ["ti-rooted", "ti-rising", "ti-radiant"] }
+                  - { label: "Emoji", name: "emoji", widget: "string" }
+                  - { label: "Tier Name", name: "name", widget: "string" }
+                  - { label: "Tier Label", name: "label", widget: "string" }
+                  - { label: "Commission % (number only)", name: "pct", widget: "string" }
+                  - { label: "Description", name: "desc", widget: "text" }
+              - { label: "Button Label", name: "ctaLabel", widget: "string" }
+              - { label: "Button Link", name: "ctaHref", widget: "string" }
+
+          - label: "Newsletter / Contact Section"
+            name: "newsletter"
+            widget: "object"
+            fields:
+              - { label: "Small Label", name: "label", widget: "string" }
+              - { label: "Heading", name: "title", widget: "string" }
+              - { label: "Intro Body", name: "body", widget: "text" }
+              - { label: "Email Placeholder", name: "emailPlaceholder", widget: "string" }
+              - { label: "Subscribe Button Label", name: "subscribeBtnLabel", widget: "string" }
+              - { label: "Corporate Box Label", name: "corporateLabel", widget: "string" }
+              - { label: "Corporate Box Body", name: "corporateBody", widget: "text" }
+              - { label: "Corporate Email", name: "corporateEmail", widget: "string" }
+              - { label: "Affiliate Box Label", name: "affiliateLabel", widget: "string" }
+              - { label: "Affiliate Box Body", name: "affiliateBody", widget: "text" }
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Quote", name: "quote", widget: "string" }
+              - label: "Columns"
+                name: "columns"
+                widget: "list"
+                fields:
+                  - { label: "Column Heading", name: "heading", widget: "string" }
+                  - label: "Links"
+                    name: "links"
+                    widget: "list"
+                    fields:
+                      - { label: "Label", name: "label", widget: "string" }
+                      - { label: "Href", name: "href", widget: "string" }
+              - { label: "Copyright Text", name: "copyright", widget: "string" }
+              - label: "Social Links"
+                name: "socialLinks"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - { label: "Legal Text", name: "legal", widget: "string" }

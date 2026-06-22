@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>{{ site.meta.title }}</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ── RESET & TOKENS ── */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:    #0A1A30;
+  --royal:   #152E5E;
+  --copper:  #C4580A;
+  --copper2: #E8720A;
+  --gold:    #D4920A;
+  --sky:     #6ABAE0;
+  --jade:    #2A9E6A;
+  --beige:   #F0E6D2;
+  --beige2:  #E8D9C0;
+  --cream:   #FBF6EE;
+  --smoke:   #3A2818;
+  --border:  #D5C4A8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--beige);color:var(--navy);overflow-x:hidden}
+
+/* ── MARK SVG (inline, used everywhere) ── */
+.mark svg{display:block}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(240,230,210,0.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 2rem;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-wordmark{display:flex;flex-direction:column;line-height:1}
+.nav-wordmark span:first-child{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);letter-spacing:3px}
+.nav-wordmark span:last-child{font-size:0.55rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-top:2px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.8rem;font-weight:500;color:var(--smoke);text-decoration:none;letter-spacing:0.3px;transition:color 0.2s}
+.nav-links a:hover{color:var(--copper)}
+.nav-cta{background:var(--copper);color:white;padding:0.55rem 1.35rem;border:none;border-radius:4px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background 0.2s;letter-spacing:0.5px}
+.nav-cta:hover{background:var(--copper2)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.nav-toggle span{width:22px;height:2px;background:var(--navy);display:block;border-radius:2px}
+
+/* ── HERO ── */
+.hero{
+  min-height:92vh;background:var(--navy);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:5rem 2rem 4rem;
+  position:relative;overflow:hidden;
+}
+.rings{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0}
+.ring{
+  position:absolute;border-radius:50%;
+  transform:translate(-50%,-50%);opacity:0;
+  animation:expand 5s ease-out infinite;
+}
+.ring:nth-child(1){width:120px;height:120px;border:1px solid rgba(196,88,10,0.5);animation-delay:0s}
+.ring:nth-child(2){width:280px;height:280px;border:1px solid rgba(106,186,224,0.3);animation-delay:1s}
+.ring:nth-child(3){width:460px;height:460px;border:1px solid rgba(42,158,106,0.2);animation-delay:2s}
+.ring:nth-child(4){width:660px;height:660px;border:0.5px solid rgba(196,88,10,0.12);animation-delay:3s}
+@keyframes expand{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(0.1)}
+  20%{opacity:1}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(1)}
+}
+.hero-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--sky);margin-bottom:1.5rem;position:relative;z-index:1}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,10vw,7rem);font-weight:900;line-height:0.92;color:var(--beige);margin-bottom:0.5rem;position:relative;z-index:1;letter-spacing:-1px}
+.hero-title em{color:var(--copper);font-style:normal}
+.hero-sub{font-size:1.05rem;color:rgba(240,230,210,0.6);max-width:480px;line-height:1.85;margin:1.5rem auto 2.5rem;position:relative;z-index:1}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+.btn-primary{background:var(--copper);color:white;padding:0.9rem 2.2rem;border:none;border-radius:4px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background 0.2s;letter-spacing:0.5px;display:inline-block}
+.btn-primary:hover{background:var(--copper2)}
+.btn-ghost{background:transparent;color:var(--sky);padding:0.9rem 2.2rem;border:1px solid var(--sky);border-radius:4px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-ghost:hover{background:var(--sky);color:var(--navy)}
+.hero-mark{margin:0 auto 2rem;position:relative;z-index:1}
+
+/* ── PALETTE STRIP ── */
+.palette-strip{display:flex;height:6px}
+.ps{flex:1}
+
+/* ── SECTIONS ── */
+.section{padding:5.5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--copper);margin-bottom:0.6rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:1.25rem}
+.section-body{font-size:0.95rem;color:var(--smoke);line-height:1.9;max-width:600px}
+.pull-quote{border-left:3px solid var(--copper);padding:0.5rem 0 0.5rem 1.25rem;font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;color:var(--navy);line-height:1.65;margin:1.75rem 0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+
+/* ── ABOUT ── */
+.about{background:var(--beige2)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.stat-card{background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:1.25rem}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--copper)}
+.stat-label{font-size:0.65rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--smoke);opacity:0.55;margin-top:3px}
+
+/* ── SHOP ── */
+.shop{background:var(--cream)}
+.book-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.25rem;margin-top:2.5rem}
+.book-card{background:white;border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
+.book-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(10,26,48,0.12)}
+.book-cover{height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center}
+.book-cover-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:white;line-height:1.35}
+.bc1{background:var(--navy)}
+.bc2{background:var(--copper)}
+.bc3{background:var(--gold)}
+.bc4{background:var(--jade)}
+.bc5{background:var(--royal)}
+.book-body{padding:1.1rem}
+.book-tag{font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--copper);margin-bottom:0.35rem}
+.book-price{font-size:1.1rem;font-weight:700;color:var(--copper);margin:0.4rem 0 0.75rem}
+.book-btn{width:100%;padding:0.55rem;background:var(--navy);color:var(--beige);border:none;border-radius:4px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.2s}
+.book-btn:hover{background:var(--copper)}
+
+/* ── TEACHINGS ── */
+.teachings{background:var(--navy)}
+.teaching-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.teaching-card{border:1px solid rgba(240,230,210,0.1);border-radius:8px;padding:2rem 1.5rem;transition:border-color 0.2s,background 0.2s;cursor:pointer}
+.teaching-card:hover{border-color:var(--copper);background:rgba(196,88,10,0.06)}
+.tc-icon{font-size:2rem;margin-bottom:1rem}
+.tc-label{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:0.4rem}
+.tc1 .tc-label{color:var(--sky)}
+.tc2 .tc-label{color:var(--jade)}
+.tc3 .tc-label{color:var(--gold)}
+.tc-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--beige);line-height:1.35;margin-bottom:0.75rem}
+.tc-desc{font-size:0.8rem;color:rgba(240,230,210,0.5);line-height:1.75}
+.tc-link{font-size:0.75rem;font-weight:600;color:var(--copper);text-decoration:none;margin-top:1rem;display:inline-block;letter-spacing:0.5px}
+.tc-link:hover{color:var(--copper2)}
+
+/* ── APP ── */
+.app-sec{background:var(--beige2)}
+.app-mockup{background:var(--navy);border-radius:16px;padding:1.75rem;border:1px solid rgba(106,186,224,0.15)}
+.app-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.app-logo-text{font-family:'Playfair Display',serif;font-weight:700;color:var(--beige);font-size:0.9rem;letter-spacing:2px}
+.ego-badge{background:var(--copper);color:white;padding:0.2rem 0.75rem;border-radius:20px;font-size:0.68rem;font-weight:700;letter-spacing:1px}
+.ego-meter{background:#0D1E30;border-radius:8px;padding:1rem;margin-bottom:1rem}
+.meter-label{font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(106,186,224,0.45);margin-bottom:0.6rem}
+.meter-bar{height:7px;background:rgba(255,255,255,0.08);border-radius:8px;overflow:hidden}
+.meter-fill{height:100%;width:72%;background:linear-gradient(90deg,var(--copper),var(--copper2));border-radius:8px}
+.meter-result{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--copper);margin-top:0.6rem;font-style:italic}
+.daily-card{background:#07101A;border:1px solid rgba(106,186,224,0.1);border-radius:8px;padding:1rem}
+.daily-tag{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky);display:block;margin-bottom:0.35rem}
+.daily-text{font-family:'Playfair Display',serif;font-style:italic;font-size:0.88rem;color:var(--beige);line-height:1.7}
+.feat-list{display:flex;flex-direction:column;gap:0.65rem;margin-top:1.5rem}
+.feat-row{display:flex;align-items:flex-start;gap:10px;font-size:0.88rem;color:var(--smoke);line-height:1.5}
+.feat-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.fd-copper{background:var(--copper)}
+.fd-jade{background:var(--jade)}
+.fd-sky{background:var(--sky)}
+.waitlist-row{display:flex;gap:0.75rem;margin-top:2rem;flex-wrap:wrap}
+.waitlist-input{flex:1;min-width:180px;padding:0.75rem 1rem;border:1px solid var(--border);border-radius:4px;background:white;font-size:0.85rem;font-family:'Inter',sans-serif;color:var(--navy)}
+.waitlist-input:focus{outline:none;border-color:var(--copper)}
+
+/* ── PRINCIPLES ── */
+.principles{background:var(--cream)}
+.principle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:2.5rem}
+.principle-card{background:white;border:1px solid var(--border);border-radius:8px;padding:1.5rem;position:relative;overflow:hidden}
+.principle-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--copper)}
+.p-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:rgba(196,88,10,0.12);line-height:1;margin-bottom:0.25rem}
+.p-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.p-text{font-size:0.8rem;color:var(--smoke);line-height:1.75;opacity:0.75}
+
+/* ── CRYSTAL ── */
+.crystal{background:var(--navy)}
+.crystal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2.5rem}
+.crystal-card{background:rgba(240,230,210,0.04);border:1px solid rgba(240,230,210,0.1);border-radius:8px;padding:1.25rem;transition:background 0.2s,border-color 0.2s}
+.crystal-card:hover{background:rgba(42,158,106,0.08);border-color:var(--jade)}
+.crystal-gem{font-size:1.8rem;margin-bottom:0.6rem}
+.crystal-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--beige);margin-bottom:0.3rem}
+.crystal-desc{font-size:0.75rem;color:rgba(240,230,210,0.45);line-height:1.65}
+
+/* ── GROUP / DRAMA ── */
+.drama{background:var(--beige2)}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem}
+.module-card{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:1.25rem}
+.module-num{font-size:0.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--copper);margin-bottom:0.35rem}
+.module-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem}
+.module-text{font-size:0.78rem;color:var(--smoke);line-height:1.7;opacity:0.75}
+
+/* ── AFFILIATE ── */
+.affiliate{background:var(--cream)}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.tier-card{border-radius:10px;padding:2.25rem 1.5rem;text-align:center;position:relative;overflow:hidden}
+.tier-standard{background:white;border:1px solid var(--border)}
+.tier-featured{background:var(--navy);border:1px solid var(--copper)}
+.tier-icon-wrap{width:60px;height:60px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center}
+.ti-rooted{background:rgba(42,158,106,0.12)}
+.ti-rising{background:rgba(196,88,10,0.12)}
+.ti-radiant{background:rgba(212,146,10,0.15)}
+.tier-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:0.2rem}
+.tier-featured .tier-name{color:var(--beige)}
+.tier-label{font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--copper);margin-bottom:1rem}
+.tier-pct{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--copper);line-height:1}
+.tier-pct sup{font-size:1.2rem}
+.tier-desc{font-size:0.78rem;color:var(--smoke);line-height:1.65;margin-top:0.5rem;opacity:0.7}
+.tier-featured .tier-desc{color:rgba(240,230,210,0.55)}
+
+/* ── SERIES ── */
+.series{background:var(--navy)}
+.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:2rem}
+.series-card{background:rgba(240,230,210,0.04);border:1px solid rgba(240,230,210,0.1);border-radius:8px;padding:1.25rem;display:flex;flex-direction:column;gap:0.4rem}
+.series-type{font-size:0.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--sky)}
+.series-title{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--beige);line-height:1.3}
+.series-price{font-size:0.9rem;font-weight:700;color:var(--copper)}
+.series-bundle{background:rgba(196,88,10,0.12);border:1px solid rgba(196,88,10,0.3);border-radius:8px;padding:1.5rem;margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.bundle-text{color:var(--beige)}
+.bundle-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700}
+.bundle-sub{font-size:0.78rem;opacity:0.55;margin-top:2px}
+.bundle-price{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--copper)}
+.bundle-save{font-size:0.7rem;color:var(--jade);font-weight:600;margin-top:2px;text-align:center}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--beige2)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.test-card{background:white;border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+.test-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:0.95rem;color:var(--navy);line-height:1.7;margin-bottom:1rem}
+.test-quote::before{content:'\201C';font-size:2rem;color:var(--copper);line-height:0;vertical-align:-0.4rem;margin-right:2px}
+.test-name{font-size:0.78rem;font-weight:600;color:var(--smoke)}
+.test-title{font-size:0.7rem;color:var(--smoke);opacity:0.5;margin-top:2px}
+
+/* ── NEWSLETTER ── */
+.newsletter{background:var(--copper)}
+.newsletter .section-label{color:rgba(255,255,255,0.7)}
+.newsletter .section-title{color:white}
+.newsletter .section-body{color:rgba(255,255,255,0.75);max-width:480px}
+.nl-form{display:flex;gap:0.75rem;margin-top:2rem;flex-wrap:wrap}
+.nl-input{flex:1;min-width:220px;padding:0.85rem 1.1rem;border:1px solid rgba(255,255,255,0.3);border-radius:4px;background:rgba(255,255,255,0.12);color:white;font-size:0.9rem;font-family:'Inter',sans-serif}
+.nl-input::placeholder{color:rgba(255,255,255,0.45)}
+.nl-input:focus{outline:none;border-color:white}
+.nl-btn{padding:0.85rem 2rem;background:var(--navy);color:var(--beige);border:none;border-radius:4px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background 0.2s}
+.nl-btn:hover{background:#122040}
+
+/* ── FOOTER ── */
+footer{background:#050E18;padding:3.5rem 2rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(240,230,210,0.08)}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--beige);letter-spacing:3px;margin:0.75rem 0 0.35rem}
+.footer-tagline{font-size:0.72rem;color:rgba(240,230,210,0.3);letter-spacing:1px}
+.footer-col h4{font-size:0.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);opacity:0.65;margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
+.footer-col li a{font-size:0.82rem;color:rgba(240,230,210,0.35);text-decoration:none;transition:color 0.2s}
+.footer-col li a:hover{color:var(--beige)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:0.7rem;color:rgba(240,230,210,0.2);flex-wrap:wrap;gap:0.5rem}
+.social-links{display:flex;gap:1rem}
+.social-links a{font-size:0.72rem;color:rgba(240,230,210,0.25);text-decoration:none;transition:color 0.2s}
+.social-links a:hover{color:var(--copper)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .two-col,.teaching-cards,.tier-grid,.three-col,.four-col,.test-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:flex}
+}
+@media(max-width:600px){
+  .footer-top{grid-template-columns:1fr}
+  .hero-title{font-size:2.8rem}
+  .book-grid,.crystal-grid,.module-grid,.series-grid,.principle-grid{grid-template-columns:1fr}
+}
+
+/* ── ANIMATIONS ── */
+@keyframes markBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.mark-anim{animation:markBreathe 3.6s ease-in-out infinite}
+
+@keyframes seedRelease{
+  0%,55%{opacity:0;transform:translate(0,0)}
+  65%{opacity:0.9;transform:translate(var(--tx1),var(--ty1))}
+  82%{opacity:0.4;transform:translate(var(--tx2),var(--ty2))}
+  100%{opacity:0;transform:translate(var(--tx3),var(--ty3))}
+}
+.seed1{--tx1:10px;--ty1:-8px;--tx2:26px;--ty2:-20px;--tx3:42px;--ty3:-32px;animation:seedRelease 4s ease-out 0.3s infinite}
+.seed2{--tx1:12px;--ty1:-3px;--tx2:30px;--ty2:-8px;--tx3:48px;--ty3:-13px;animation:seedRelease 4s ease-out 0.9s infinite}
+.seed3{--tx1:8px;--ty1:-12px;--tx2:20px;--ty2:-28px;--tx3:32px;--ty3:-44px;animation:seedRelease 4s ease-out 1.5s infinite}
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg width="32" height="32" viewBox="-56 -62 112 112" xmlns="http://www.w3.org/2000/svg">
+      <g stroke-linecap="round" class="mark-anim" style="transform-origin:center">
+        <line x1="0" y1="0" x2="0" y2="-46" stroke="#0A1A30" stroke-width="1"/><line x1="0" y1="-36" x2="-6" y2="-44" stroke="#0A1A30" stroke-width="0.7"/><line x1="0" y1="-36" x2="6" y2="-44" stroke="#0A1A30" stroke-width="0.7"/><circle cx="0" cy="-48" r="2.5" fill="#0A1A30"/><circle cx="-6" cy="-46" r="2.1" fill="#0A1A30"/><circle cx="6" cy="-46" r="2.1" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="17" y2="-29" stroke="#0A1A30" stroke-width="0.7"/><circle cx="18" cy="-31" r="1.8" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="40" y2="-23" stroke="#0A1A30" stroke-width="1"/><circle cx="42" cy="-24" r="2.5" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="32" y2="0" stroke="#0A1A30" stroke-width="0.7"/><circle cx="34" cy="0" r="1.8" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="40" y2="23" stroke="#0A1A30" stroke-width="1"/><circle cx="42" cy="24" r="2.5" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="17" y2="29" stroke="#0A1A30" stroke-width="0.7"/><circle cx="18" cy="31" r="1.8" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="0" y2="46" stroke="#0A1A30" stroke-width="1"/><circle cx="0" cy="48" r="2.5" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="-17" y2="29" stroke="#0A1A30" stroke-width="0.7"/><circle cx="-18" cy="31" r="1.8" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="-40" y2="23" stroke="#0A1A30" stroke-width="1"/><circle cx="-42" cy="24" r="2.5" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="-32" y2="0" stroke="#0A1A30" stroke-width="0.7"/><circle cx="-34" cy="0" r="1.8" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="-40" y2="-23" stroke="#0A1A30" stroke-width="1"/><circle cx="-42" cy="-24" r="2.5" fill="#0A1A30"/>
+        <line x1="0" y1="0" x2="-17" y2="-29" stroke="#0A1A30" stroke-width="0.7"/><circle cx="-18" cy="-31" r="1.8" fill="#0A1A30"/>
+      </g>
+      <path d="M0 -10 C-5.5 -7.5 -7 -2 -5.5 2.5 C-3.5 7 3.5 7 5.5 2.5 C7 -2 5.5 -7.5 0 -10Z" fill="#0A1A30"/>
+      <path d="M0 -6.5 C-3.5 -4.5 -4.5 -1 -3.5 1.8 C-2.2 5 2.2 5 3.5 1.8 C4.5 -1 3.5 -4.5 0 -6.5Z" fill="#F0E6D2"/>
+      <path d="M0 -3.8 C-2 -2.5 -2.6 -0.5 -2 1.1 C-1.3 2.8 1.3 2.8 2 1.1 C2.6 -0.5 2 -2.5 0 -3.8Z" fill="#0A1A30"/>
+      <circle cx="0" cy="0.9" r="1.1" fill="#F0E6D2"/>
+    </svg>
+    <div class="nav-wordmark">
+      <span>{{ site.meta.brandName }}</span>
+      <span>{{ site.meta.tagline }}</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    {% for link in site.nav.links %}
+    <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{{ site.nav.ctaHref }}" class="nav-cta">{{ site.nav.ctaLabel }}</a>
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+
+  <div class="hero-mark">
+    <svg width="160" height="160" viewBox="-90 -96 180 180" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+      <g style="transform-origin:0 0" class="mark-anim">
+        <path d="M0 14 Q1 44 2 80" stroke="rgba(196,88,10,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="0"   y2="-68" stroke="#F0E6D2" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="0" y1="-54" x2="-9" y2="-66" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="0" y1="-54" x2="9"  y2="-66" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <circle cx="0"  cy="-71" r="3.5" fill="#F0E6D2"/>
+        <circle cx="-9" cy="-69" r="3"   fill="#F0E6D2"/>
+        <circle cx="9"  cy="-69" r="3"   fill="#F0E6D2"/>
+
+        <line x1="0" y1="0" x2="59"  y2="-34" stroke="#F0E6D2" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="46" y1="-27" x2="54" y2="-38" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="46" y1="-27" x2="61" y2="-31" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <circle cx="62" cy="-36" r="3.5" fill="#F0E6D2"/>
+        <circle cx="54" cy="-41" r="3"   fill="#F0E6D2"/>
+        <circle cx="63" cy="-31" r="3"   fill="#F0E6D2"/>
+
+        <line x1="0" y1="0" x2="59"  y2="34"  stroke="#F0E6D2" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="46" y1="27" x2="54" y2="38"  stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="46" y1="27" x2="61" y2="31"  stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <circle cx="62" cy="36"  r="3.5" fill="#F0E6D2"/>
+        <circle cx="54" cy="41"  r="3"   fill="#F0E6D2"/>
+        <circle cx="63" cy="31"  r="3"   fill="#F0E6D2"/>
+
+        <line x1="0" y1="0" x2="0"   y2="68"  stroke="#F0E6D2" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="0" y1="54" x2="-9" y2="66"  stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="0" y1="54" x2="9"  y2="66"  stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <circle cx="0"  cy="71"  r="3.5" fill="#F0E6D2"/>
+        <circle cx="-9" cy="69"  r="3"   fill="#F0E6D2"/>
+        <circle cx="9"  cy="69"  r="3"   fill="#F0E6D2"/>
+
+        <line x1="0" y1="0" x2="-59" y2="34"  stroke="#F0E6D2" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="-46" y1="27" x2="-61" y2="31" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="-46" y1="27" x2="-54" y2="38" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <circle cx="-62" cy="36"  r="3.5" fill="#F0E6D2"/>
+        <circle cx="-63" cy="31"  r="3"   fill="#F0E6D2"/>
+        <circle cx="-54" cy="41"  r="3"   fill="#F0E6D2"/>
+
+        <line x1="0" y1="0" x2="-59" y2="-34" stroke="#F0E6D2" stroke-width="1.1" stroke-linecap="round"/>
+        <line x1="-46" y1="-27" x2="-61" y2="-31" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="-46" y1="-27" x2="-54" y2="-38" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round"/>
+        <circle cx="-62" cy="-36" r="3.5" fill="#F0E6D2"/>
+        <circle cx="-63" cy="-31" r="3"   fill="#F0E6D2"/>
+        <circle cx="-54" cy="-41" r="3"   fill="#F0E6D2"/>
+
+        <line x1="0" y1="0" x2="22"  y2="-38" stroke="#F0E6D2" stroke-width="0.85" stroke-linecap="round"/><circle cx="23"  cy="-40" r="2.5" fill="#F0E6D2"/>
+        <line x1="0" y1="0" x2="44"  y2="0"   stroke="#F0E6D2" stroke-width="0.85" stroke-linecap="round"/><circle cx="46"  cy="0"   r="2.5" fill="#F0E6D2"/>
+        <line x1="0" y1="0" x2="22"  y2="38"  stroke="#F0E6D2" stroke-width="0.85" stroke-linecap="round"/><circle cx="23"  cy="40"  r="2.5" fill="#F0E6D2"/>
+        <line x1="0" y1="0" x2="-22" y2="38"  stroke="#F0E6D2" stroke-width="0.85" stroke-linecap="round"/><circle cx="-23" cy="40"  r="2.5" fill="#F0E6D2"/>
+        <line x1="0" y1="0" x2="-44" y2="0"   stroke="#F0E6D2" stroke-width="0.85" stroke-linecap="round"/><circle cx="-46" cy="0"   r="2.5" fill="#F0E6D2"/>
+        <line x1="0" y1="0" x2="-22" y2="-38" stroke="#F0E6D2" stroke-width="0.85" stroke-linecap="round"/><circle cx="-23" cy="-40" r="2.5" fill="#F0E6D2"/>
+
+        <path d="M0 -15 C-8 -11 -10.5 -3 -8 3.5 C-5 10 5 10 8 3.5 C10.5 -3 8 -11 0 -15Z" fill="#F0E6D2"/>
+        <path d="M0 -10 C-5.2 -7 -6.8 -1.5 -5.2 3 C-3.2 8 3.2 8 5.2 3 C6.8 -1.5 5.2 -7 0 -10Z" fill="#0A1A30"/>
+        <path d="M0 -6 C-3.2 -4 -4 -0.8 -3 1.8 C-2 4.5 2 4.5 3 1.8 C4 -0.8 3.2 -4 0 -6Z" fill="#F0E6D2"/>
+        <circle cx="0" cy="1.5" r="1.8" fill="#0A1A30"/>
+        <circle cx="-0.5" cy="0.5" r="0.65" fill="white" opacity="0.45"/>
+
+        <g class="seed1" style="transform-origin:62px -36px">
+          <circle cx="62" cy="-36" r="3.5" fill="#F0E6D2" opacity="0.9"/>
+          <line x1="62" y1="-33" x2="62" y2="-24" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+        </g>
+        <g class="seed2" style="transform-origin:23px -40px">
+          <circle cx="23" cy="-40" r="2.5" fill="#F0E6D2" opacity="0.85"/>
+          <line x1="23" y1="-37" x2="23" y2="-29" stroke="#F0E6D2" stroke-width="0.7" stroke-linecap="round" opacity="0.55"/>
+        </g>
+        <g class="seed3" style="transform-origin:0px -71px">
+          <circle cx="0" cy="-71" r="3.5" fill="#F0E6D2" opacity="0.75"/>
+          <line x1="0" y1="-68" x2="0" y2="-59" stroke="#F0E6D2" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <p class="hero-eyebrow">{{ site.hero.eyebrow }}</p>
+  <h1 class="hero-title">{{ site.hero.titleLine1 }}<br><em>{{ site.hero.titleLine2 }}</em></h1>
+  <p class="hero-sub">{{ site.hero.subtitle }}</p>
+  <div class="hero-btns">
+    <a href="{{ site.hero.primaryBtnHref }}" class="btn-primary">{{ site.hero.primaryBtnLabel }}</a>
+    <a href="{{ site.hero.ghostBtnHref }}" class="btn-ghost">{{ site.hero.ghostBtnLabel }}</a>
+  </div>
+</section>
+
+<!-- palette strip -->
+<div class="palette-strip">
+  <div class="ps" style="background:#0A1A30"></div>
+  <div class="ps" style="background:#152E5E"></div>
+  <div class="ps" style="background:#C4580A"></div>
+  <div class="ps" style="background:#D4920A"></div>
+  <div class="ps" style="background:#6ABAE0"></div>
+  <div class="ps" style="background:#2A9E6A"></div>
+  <div class="ps" style="background:#F0E6D2"></div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="section-label">{{ site.about.label }}</p>
+        <h2 class="section-title">{{ site.about.title }}</h2>
+        <p class="section-body">{{ site.about.body1 }}</p>
+        <div class="pull-quote">"{{ site.about.pullQuote }}"</div>
+        <p class="section-body">{{ site.about.body2 }}</p>
+        <div style="margin-top:1.5rem">
+          <a href="{{ site.about.ctaHref }}" class="btn-primary">{{ site.about.ctaLabel }}</a>
+        </div>
+      </div>
+      <div>
+        <div class="stat-grid">
+          {% for stat in site.about.stats %}
+          <div class="stat-card"><div class="stat-num">{{ stat.num }}</div><div class="stat-label">{{ stat.label }}</div></div>
+          {% endfor %}
+        </div>
+        <div style="margin-top:1.25rem;background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:1.25rem">
+          <p style="font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--copper);margin-bottom:0.5rem">{{ site.about.lawBoxLabel }}</p>
+          <p style="font-family:'Playfair Display',serif;font-size:0.95rem;color:var(--navy);line-height:1.6;font-style:italic">"{{ site.about.lawBoxQuote }}"</p>
+          <p style="font-size:0.78rem;color:var(--smoke);margin-top:0.5rem;line-height:1.7;opacity:0.7">{{ site.about.lawBoxBody }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SHOP ── -->
+<section class="section shop" id="shop">
+  <div class="container">
+    <p class="section-label">{{ site.shop.label }}</p>
+    <h2 class="section-title">{{ site.shop.title }}</h2>
+    <div class="book-grid">
+      {% for book in site.shop.books %}
+      <div class="book-card">
+        <div class="book-cover {{ book.colorClass }}"><div class="book-cover-title">{{ book.title }}</div></div>
+        <div class="book-body">
+          <div class="book-tag">{{ book.tag }}</div>
+          <div style="font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:var(--navy)">{{ book.title }}</div>
+          <div class="book-price">{{ book.price }}</div>
+          <button class="book-btn">Buy Now</button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── TEACHINGS ── -->
+<section class="section teachings" id="teachings">
+  <div class="container">
+    <p class="section-label" style="color:var(--sky)">{{ site.teachings.label }}</p>
+    <h2 class="section-title" style="color:var(--beige)">{{ site.teachings.title }}</h2>
+    <p class="section-body" style="color:rgba(240,230,210,0.6)">{{ site.teachings.body }}</p>
+    <div class="teaching-cards">
+      {% for card in site.teachings.cards %}
+      <div class="teaching-card {{ card.cardClass }}">
+        <div class="tc-icon">{{ card.icon }}</div>
+        <div class="tc-label">{{ card.label }}</div>
+        <div class="tc-title">{{ card.title }}</div>
+        <p class="tc-desc">{{ card.desc }}</p>
+        <a href="{{ card.linkHref }}" class="tc-link">{{ card.linkLabel }}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── PHOOK PRINCIPLES ── -->
+<section class="section principles" id="principles">
+  <div class="container">
+    <p class="section-label">{{ site.principles.label }}</p>
+    <h2 class="section-title">{{ site.principles.title }}</h2>
+    <p class="section-body">{{ site.principles.body }}</p>
+    <div class="principle-grid">
+      {% for item in site.principles.items %}
+      <div class="principle-card">
+        <div class="p-num">{{ item.num }}</div>
+        <div class="p-title">{{ item.title }}</div>
+        <p class="p-text">{{ item.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="margin-top:2.5rem;text-align:center">
+      <a href="{{ site.principles.ctaHref }}" class="btn-primary">{{ site.principles.ctaLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CRYSTAL ── -->
+<section class="section crystal" id="crystal">
+  <div class="container">
+    <p class="section-label" style="color:var(--jade)">{{ site.crystal.label }}</p>
+    <h2 class="section-title" style="color:var(--beige)">{{ site.crystal.title }}</h2>
+    <p class="section-body" style="color:rgba(240,230,210,0.6);margin-bottom:0.5rem">{{ site.crystal.body }}</p>
+    <div class="crystal-grid">
+      {% for item in site.crystal.items %}
+      <div class="crystal-card">
+        <div class="crystal-gem">{{ item.emoji }}</div>
+        <div class="crystal-name">{{ item.name }}</div>
+        <p class="crystal-desc">{{ item.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="{{ site.crystal.primaryBtnHref }}" class="btn-primary">{{ site.crystal.primaryBtnLabel }}</a>
+      <a href="{{ site.crystal.ghostBtnHref }}" class="btn-ghost" style="color:var(--jade);border-color:var(--jade)">{{ site.crystal.ghostBtnLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHOOK THE DRAMA ── -->
+<section class="section drama" id="drama">
+  <div class="container">
+    <p class="section-label">{{ site.drama.label }}</p>
+    <h2 class="section-title">{{ site.drama.title }}</h2>
+    <p class="section-body">{{ site.drama.body }}</p>
+    <div class="module-grid">
+      {% for mod in site.drama.modules %}
+      <div class="module-card">
+        <div class="module-num">{{ mod.num }}</div>
+        <div class="module-title">{{ mod.title }}</div>
+        <p class="module-text">{{ mod.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="{{ site.drama.primaryBtnHref }}" class="btn-primary">{{ site.drama.primaryBtnLabel }}</a>
+      <a href="{{ site.drama.ghostBtnHref }}" class="btn-ghost" style="border-color:var(--copper);color:var(--copper)">{{ site.drama.ghostBtnLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── APP ── -->
+<section class="section app-sec" id="app">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="section-label">{{ site.app.label }}</p>
+        <h2 class="section-title">{{ site.app.title }}</h2>
+        <p class="section-body">{{ site.app.body }}</p>
+        <div class="feat-list">
+          {% for feat in site.app.features %}
+          <div class="feat-row"><div class="feat-dot {{ feat.dotClass }}"></div><span>{{ feat.text }}</span></div>
+          {% endfor %}
+        </div>
+        <div class="waitlist-row">
+          <input class="waitlist-input" type="email" placeholder="{{ site.app.waitlistPlaceholder }}"/>
+          <button class="btn-primary">{{ site.app.waitlistBtnLabel }}</button>
+        </div>
+      </div>
+      <div>
+        <div class="app-mockup">
+          <div class="app-top">
+            <span class="app-logo-text">{{ site.meta.brandName }}</span>
+            <span class="ego-badge">{{ site.app.mockup.egoBadge }}</span>
+          </div>
+          <div class="ego-meter">
+            <div class="meter-label">{{ site.app.mockup.meterLabel }}</div>
+            <div class="meter-bar"><div class="meter-fill" style="width:{{ site.app.mockup.meterFillPct }}"></div></div>
+            <div class="meter-result">{{ site.app.mockup.meterResult }}</div>
+          </div>
+          <div class="daily-card">
+            <span class="daily-tag">{{ site.app.mockup.dailyTag }}</span>
+            <div class="daily-text">{{ site.app.mockup.dailyText }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHOOK IT SERIES ── -->
+<section class="section series" id="series">
+  <div class="container">
+    <p class="section-label" style="color:var(--sky)">{{ site.series.label }}</p>
+    <h2 class="section-title" style="color:var(--beige)">{{ site.series.title }}</h2>
+    <div class="series-grid">
+      {% for item in site.series.items %}
+      <div class="series-card">
+        <span class="series-type">{{ item.type }}</span>
+        <div class="series-title">{{ item.title }}</div>
+        <div class="series-price">{{ item.price }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="series-bundle">
+      <div class="bundle-text">
+        <div class="bundle-title">{{ site.series.bundle.title }}</div>
+        <div class="bundle-sub">{{ site.series.bundle.sub }}</div>
+      </div>
+      <div>
+        <div class="bundle-price">{{ site.series.bundle.price }}</div>
+        <div class="bundle-save">{{ site.series.bundle.save }}</div>
+      </div>
+      <a href="{{ site.series.bundle.ctaHref }}" class="btn-primary">{{ site.series.bundle.ctaLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section testimonials">
+  <div class="container">
+    <p class="section-label">{{ site.testimonials.label }}</p>
+    <h2 class="section-title">{{ site.testimonials.title }}</h2>
+    <div class="test-grid">
+      {% for t in site.testimonials.items %}
+      <div class="test-card">
+        <div class="test-quote">{{ t.quote }}</div>
+        <div class="test-name">{{ t.name }}</div>
+        <div class="test-title">{{ t.title }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ── AFFILIATE ── -->
+<section class="section affiliate" id="affiliate">
+  <div class="container">
+    <p class="section-label">{{ site.affiliate.label }}</p>
+    <h2 class="section-title">{{ site.affiliate.title }}</h2>
+    <p class="section-body">{{ site.affiliate.body }}</p>
+    <div class="tier-grid">
+      {% for tier in site.affiliate.tiers %}
+      <div class="tier-card {{ tier.cardClass }}">
+        <div class="tier-icon-wrap {{ tier.iconClass }}">
+          <svg width="28" height="28" viewBox="0 0 28 28"><text y="22" font-size="22">{{ tier.emoji }}</text></svg>
+        </div>
+        <div class="tier-name">{{ tier.name }}</div>
+        <div class="tier-label">{{ tier.label }}</div>
+        <div class="tier-pct">{{ tier.pct }}<sup>%</sup></div>
+        <p class="tier-desc">{{ tier.desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="margin-top:2.5rem;text-align:center">
+      <a href="{{ site.affiliate.ctaHref }}" class="btn-primary">{{ site.affiliate.ctaLabel }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<section class="section newsletter" id="contact">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="section-label">{{ site.newsletter.label }}</p>
+        <h2 class="section-title">{{ site.newsletter.title }}</h2>
+        <p class="section-body">{{ site.newsletter.body }}</p>
+        <div class="nl-form">
+          <input class="nl-input" type="email" placeholder="{{ site.newsletter.emailPlaceholder }}"/>
+          <button class="nl-btn">{{ site.newsletter.subscribeBtnLabel }}</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:1.25rem">
+          <p style="font-size:0.65rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);margin-bottom:0.4rem">{{ site.newsletter.corporateLabel }}</p>
+          <p style="font-size:0.88rem;color:white;line-height:1.7">{{ site.newsletter.corporateBody }}</p>
+          <a href="mailto:{{ site.newsletter.corporateEmail }}" style="font-size:0.8rem;color:var(--navy);font-weight:600;margin-top:0.5rem;display:block;background:white;padding:0.5rem 1rem;border-radius:4px;text-align:center;text-decoration:none;margin-top:0.75rem">{{ site.newsletter.corporateEmail }}</a>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:8px;padding:1.25rem">
+          <p style="font-size:0.65rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);margin-bottom:0.4rem">{{ site.newsletter.affiliateLabel }}</p>
+          <p style="font-size:0.88rem;color:white;line-height:1.7">{{ site.newsletter.affiliateBody }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <svg width="44" height="44" viewBox="-56 -62 112 112" xmlns="http://www.w3.org/2000/svg">
+          <g stroke-linecap="round">
+            <line x1="0" y1="0" x2="0" y2="-46" stroke="#C4580A" stroke-width="0.9"/><circle cx="0" cy="-48" r="2.2" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="17" y2="-29" stroke="#C4580A" stroke-width="0.65"/><circle cx="18" cy="-31" r="1.7" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="40" y2="-23" stroke="#C4580A" stroke-width="0.9"/><circle cx="42" cy="-24" r="2.2" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="32" y2="0" stroke="#C4580A" stroke-width="0.65"/><circle cx="34" cy="0" r="1.7" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="40" y2="23" stroke="#C4580A" stroke-width="0.9"/><circle cx="42" cy="24" r="2.2" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="17" y2="29" stroke="#C4580A" stroke-width="0.65"/><circle cx="18" cy="31" r="1.7" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="0" y2="46" stroke="#C4580A" stroke-width="0.9"/><circle cx="0" cy="48" r="2.2" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="-17" y2="29" stroke="#C4580A" stroke-width="0.65"/><circle cx="-18" cy="31" r="1.7" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="-40" y2="23" stroke="#C4580A" stroke-width="0.9"/><circle cx="-42" cy="24" r="2.2" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="-32" y2="0" stroke="#C4580A" stroke-width="0.65"/><circle cx="-34" cy="0" r="1.7" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="-40" y2="-23" stroke="#C4580A" stroke-width="0.9"/><circle cx="-42" cy="-24" r="2.2" fill="#C4580A"/>
+            <line x1="0" y1="0" x2="-17" y2="-29" stroke="#C4580A" stroke-width="0.65"/><circle cx="-18" cy="-31" r="1.7" fill="#C4580A"/>
+          </g>
+          <path d="M0 -10 C-5.5 -7.5 -7 -2 -5.5 2.5 C-3.5 7 3.5 7 5.5 2.5 C7 -2 5.5 -7.5 0 -10Z" fill="#C4580A"/>
+          <path d="M0 -6.5 C-3.5 -4.5 -4.5 -1 -3.5 1.8 C-2.2 5 2.2 5 3.5 1.8 C4.5 -1 3.5 -4.5 0 -6.5Z" fill="#050E18"/>
+          <path d="M0 -3.8 C-2 -2.5 -2.6 -0.5 -2 1.1 C-1.3 2.8 1.3 2.8 2 1.1 C2.6 -0.5 2 -2.5 0 -3.8Z" fill="#C4580A"/>
+          <circle cx="0" cy="0.8" r="1" fill="#050E18"/>
+        </svg>
+        <div class="footer-brand-name">{{ site.meta.brandName }}</div>
+        <div class="footer-tagline">{{ site.footer.tagline }}</div>
+        <div style="margin-top:1.25rem;font-size:0.75rem;color:rgba(240,230,210,0.3);line-height:1.8;max-width:220px">{{ site.footer.quote }}</div>
+      </div>
+      {% for col in site.footer.columns %}
+      <div class="footer-col">
+        <h4>{{ col.heading }}</h4>
+        <ul>
+          {% for link in col.links %}
+          <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="footer-bottom">
+      <span>{{ site.footer.copyright }}</span>
+      <div class="social-links">
+        {% for s in site.footer.socialLinks %}
+        <a href="{{ s.href }}">{{ s.label }}</a>
+        {% endfor %}
+      </div>
+      <span>{{ site.footer.legal }}</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile nav toggle
+const toggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navCta = document.querySelector('.nav-cta');
+if(toggle){
+  toggle.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '68px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'rgba(240,230,210,0.98)';
+    navLinks.style.padding = '1rem 2rem 1.5rem';
+    navLinks.style.borderBottom = '1px solid #D5C4A8';
+    navLinks.style.zIndex = '199';
+    if(open) navLinks.style.display = 'none';
+  });
+}
+
+// Smooth scroll offset for sticky nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({top, behavior:'smooth'});
+    }
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.book-card,.teaching-card,.principle-card,.crystal-card,.module-card,.tier-card,.series-card,.test-card,.stat-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                          

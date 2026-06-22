@@ -1,0 +1,261 @@
+{
+  "meta": {
+    "title": "Phook Theory — Balanced Wisdom · Modern Truth",
+    "brandName": "PHOOK THEORY",
+    "tagline": "Balanced Wisdom · Modern Truth"
+  },
+  "nav": {
+    "links": [
+      { "label": "About", "href": "#about" },
+      { "label": "Shop", "href": "#shop" },
+      { "label": "Teachings", "href": "#teachings" },
+      { "label": "App", "href": "#app" },
+      { "label": "Affiliate", "href": "#affiliate" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "ctaLabel": "Get the App",
+    "ctaHref": "#app"
+  },
+  "hero": {
+    "eyebrow": "Energy flows where breath goes",
+    "titleLine1": "Blow up.",
+    "titleLine2": "Or wake up.",
+    "subtitle": "The ego check you didn't know you needed — universal wisdom, breath practices, and tools to remove what blocks you.",
+    "primaryBtnLabel": "Explore the Teachings",
+    "primaryBtnHref": "#shop",
+    "ghostBtnLabel": "Join App Waitlist",
+    "ghostBtnHref": "#app"
+  },
+  "about": {
+    "label": "What is Phook Theory",
+    "title": "The breath that changes everything",
+    "body1": "In many traditions across cultures, a healer's breath carries power to bless, cleanse, and restore. Phook Theory is built on that single ancient idea — one breath, released with intention, changes everything it touches.",
+    "pullQuote": "Truth has breath. This is it.",
+    "body2": "No toxic positivity. No fluff. Just honest breath — the kind that either lights your fire or lets the air out of your ego. Balanced wisdom for the modern mind.",
+    "ctaLabel": "Explore Teachings",
+    "ctaHref": "#teachings",
+    "stats": [
+      { "num": "7", "label": "Phook Principles" },
+      { "num": "5+", "label": "eBooks" },
+      { "num": "3", "label": "Teachings arms" },
+      { "num": "1", "label": "Daily phook" }
+    ],
+    "lawBoxLabel": "Universal Laws",
+    "lawBoxQuote": "Energy Flows Where Breath Goes",
+    "lawBoxBody": "The Phook Principles — a modern, accessible framework for universal energy truth."
+  },
+  "shop": {
+    "label": "The Shop",
+    "title": "Teachings that check you",
+    "books": [
+      { "title": "Phook Your Ego", "tag": "Self-Awareness", "price": "$12.99", "colorClass": "bc1" },
+      { "title": "The Breath Before the Breakthrough", "tag": "Mindset", "price": "$12.99", "colorClass": "bc2" },
+      { "title": "Blow Up or Wake Up", "tag": "Ego & Identity", "price": "$12.99", "colorClass": "bc3" },
+      { "title": "The Phook Method", "tag": "The Method", "price": "$14.99", "colorClass": "bc4" },
+      { "title": "The Phook Principles", "tag": "Universal Laws", "price": "$14.99", "colorClass": "bc5" }
+    ]
+  },
+  "teachings": {
+    "label": "Three Teaching Arms",
+    "title": "The Phook Theory Framework",
+    "body": "Every teaching under Phook Theory asks the same question: what are you holding that your breath could release? Three arms. One breath.",
+    "cards": [
+      {
+        "cardClass": "tc1",
+        "icon": "🌬️",
+        "label": "Universal Laws",
+        "title": "Energy Flows Where Breath Goes",
+        "desc": "The Phook Principles — 7 universal energy laws. The Breath Laws — 6 daily practices. A modern, non-religious framework for understanding how your energy shapes your reality.",
+        "linkLabel": "Explore The Phook Principles →",
+        "linkHref": "#principles"
+      },
+      {
+        "cardClass": "tc2",
+        "icon": "🔮",
+        "label": "Metaphysical",
+        "title": "The Crystal Phook Clearing — Tools to Remove What Blocks You",
+        "desc": "Crystals, space clearing, body energy work, ritual design. Physical and energetic tools for removing what stands between you and your clearest breath.",
+        "linkLabel": "Enter The Clearing →",
+        "linkHref": "#crystal"
+      },
+      {
+        "cardClass": "tc3",
+        "icon": "🤝",
+        "label": "Group & Collective",
+        "title": "Phook the Drama — Ego-Free Collective Energy and Group Flow",
+        "desc": "Workplace culture, team trust, group flow. Eight modules for any collective trying to function without the drama. The Balanced Office framework for efficient, ego-aware operations.",
+        "linkLabel": "Phook the Drama →",
+        "linkHref": "#drama"
+      }
+    ]
+  },
+  "principles": {
+    "label": "Universal Laws",
+    "title": "The Phook Principles",
+    "body": "Seven laws. Accessible to all traditions, backgrounds, and beliefs. The universal truth that every wisdom culture has understood: your breath and attention shape your reality.",
+    "items": [
+      { "num": "01", "title": "The Breath Law", "text": "Energy flows where breath goes. What you breathe into, you breathe life into. What you hold your breath from, you starve." },
+      { "num": "02", "title": "The Release Law", "text": "What you cannot release controls you. The phook — the exhale — is where your power lives. Not in the holding." },
+      { "num": "03", "title": "The Scatter Law", "text": "Truth, like dandelion seeds, multiplies when released. Wisdom hoarded decays. Wisdom shared grows." },
+      { "num": "04", "title": "The Return Law", "text": "What you release with intention returns transformed. Energy is never lost — it shifts form." },
+      { "num": "05", "title": "The Ego Check Law", "text": "The cleaner your breath, the cleaner your energy. Ego is compressed air. Phook it out." },
+      { "num": "06", "title": "The Watch Law", "text": "The eye at the centre sees all directions equally. Wisdom is not about looking forward — it is about seeing clearly from stillness." },
+      { "num": "07", "title": "The Balance Law", "text": "Long and short. Inhale and exhale. Work and rest. The alternating rhythm of all things in nature is the rhythm of a balanced life." }
+    ],
+    "ctaLabel": "Get The Phook Principles — $14.99",
+    "ctaHref": "#shop"
+  },
+  "crystal": {
+    "label": "Metaphysical",
+    "title": "The Crystal Phook Clearing",
+    "body": "Tools to remove what blocks you. Crystals, space clearing, body energy work, and ritual design — practical anchors for intention.",
+    "items": [
+      { "emoji": "🖤", "name": "Black Tourmaline", "desc": "Removes what blocks you. Grounds scattered energy. The primary phook crystal." },
+      { "emoji": "🤍", "name": "Clear Quartz", "desc": "Amplifies intention. Clarity after the clearing. Breath made visible." },
+      { "emoji": "🪨", "name": "Selenite", "desc": "Space and aura cleansing. Light in the dark corners." },
+      { "emoji": "💜", "name": "Amethyst", "desc": "Calms ego. Supports wisdom over reaction. The watch stone." },
+      { "emoji": "💛", "name": "Citrine", "desc": "Activates after the release. Abundance, joy, forward motion." },
+      { "emoji": "💙", "name": "Lapis Lazuli", "desc": "Truth stone. Speaks what needs to be said. The Scatter Law in crystal form." },
+      { "emoji": "🩷", "name": "Rose Quartz", "desc": "Balances after the ego check. Self-compassion is part of the practice." }
+    ],
+    "primaryBtnLabel": "The Crystal Phook Clearing — $14.99",
+    "primaryBtnHref": "#shop",
+    "ghostBtnLabel": "Get the Starter Kit — $49",
+    "ghostBtnHref": "#shop"
+  },
+  "drama": {
+    "label": "Group & Collective",
+    "title": "Phook the Drama",
+    "body": "Ego-free collective energy and group flow. Eight modules for teams, workplaces, schools, and any group of humans trying to function together without the drama.",
+    "modules": [
+      { "num": "Module 01", "title": "The Ego Audit", "text": "Understand your own ego role before trying to change others. Personal clarity first." },
+      { "num": "Module 02", "title": "The Breath Check", "text": "Open every meeting with a collective breath practice. Sets the energetic tone for what follows." },
+      { "num": "Module 03", "title": "Trust Architecture", "text": "How trust is built, broken, and rebuilt. Practical frameworks for psychological safety." },
+      { "num": "Module 04", "title": "The Drama Map", "text": "Identify where drama lives in your group — roles, triggers, patterns. Name it without blame." },
+      { "num": "Module 05", "title": "Phook the Hierarchy", "text": "Flattening ego-driven power structures. How to lead and follow with equal dignity." },
+      { "num": "Module 06", "title": "Collective Flow", "text": "What group flow actually feels like and how to create the conditions for it consistently." },
+      { "num": "Module 07", "title": "The Balanced Office", "text": "Practical systems: decision frameworks, conflict protocols, feedback culture, and team rhythm." },
+      { "num": "Module 08", "title": "The Group Phook", "text": "A recurring team practice — the collective exhale. Regular intentional release of accumulated group tension." }
+    ],
+    "primaryBtnLabel": "Full Course — $149",
+    "primaryBtnHref": "#shop",
+    "ghostBtnLabel": "Corporate Packages →",
+    "ghostBtnHref": "#contact"
+  },
+  "app": {
+    "label": "The Phook Theory App",
+    "title": "Your daily ego check",
+    "body": "The Phook Theory app checks your energy daily — then either deflates the ego or elevates it, with wisdom and breath practices rooted in The Phook Principles.",
+    "features": [
+      { "dotClass": "fd-copper", "text": "Daily Ego Check Quiz — 'You Need a Phook' or 'Phook Yourself Up'" },
+      { "dotClass": "fd-jade", "text": "Phook It Journal — guided prompts from your daily score" },
+      { "dotClass": "fd-sky", "text": "Daily Phook — one truth delivered every morning" },
+      { "dotClass": "fd-copper", "text": "Teachings Library — eBooks, audio, micro-courses" },
+      { "dotClass": "fd-jade", "text": "Crystal Phook Tracker — log your clearing practice" },
+      { "dotClass": "fd-sky", "text": "The Phook Circle — community accountability" }
+    ],
+    "waitlistPlaceholder": "your@email.com",
+    "waitlistBtnLabel": "Join Waitlist",
+    "mockup": {
+      "egoBadge": "Ego: 72%",
+      "meterLabel": "Today's ego check",
+      "meterFillPct": "72%",
+      "meterResult": "You need a Phook ↓",
+      "dailyTag": "Today's Phook",
+      "dailyText": "\"Stop waiting for permission. The breath is already yours.\""
+    }
+  },
+  "series": {
+    "label": "Mixed Format",
+    "title": "The Phook It Series",
+    "items": [
+      { "type": "eBook", "title": "Phook It — Stop Playing Small", "price": "$7.99" },
+      { "type": "Podcast · Free", "title": "The Phook It Podcast", "price": "24 Episodes" },
+      { "type": "Video · Free", "title": "Phook It — The Ego Reset", "price": "20 min" },
+      { "type": "eBook", "title": "Phook It — Relationships & Real Talk", "price": "$7.99" },
+      { "type": "Course", "title": "Phook It — The 7-Day Ego Audit", "price": "$29.99" }
+    ],
+    "bundle": {
+      "title": "The Full Phook It Bundle",
+      "sub": "Everything above — yours to keep",
+      "price": "$49",
+      "save": "Saves 38%",
+      "ctaLabel": "Get the Bundle",
+      "ctaHref": "#shop"
+    }
+  },
+  "testimonials": {
+    "label": "Community",
+    "title": "Real phooks, real shifts",
+    "items": [
+      { "quote": "I didn't know I needed an ego check until Phook Theory gave me one. The Phook Method changed how I see every decision I make.", "name": "M. Okafor", "title": "Entrepreneur · Lagos" },
+      { "quote": "We ran Phook the Drama with our whole team. The Balanced Office module alone changed how we run meetings. No more two-hour sessions that go nowhere.", "name": "J. Rivera", "title": "Operations Director · Miami" },
+      { "quote": "The Crystal Phook Clearing starter kit arrived and I cried. The curation is intentional. You can feel the thought behind every stone.", "name": "T. Nakamura", "title": "Wellness Practitioner · Tokyo" }
+    ]
+  },
+  "affiliate": {
+    "label": "Phook Partners",
+    "title": "Earn with every truth you share",
+    "body": "Three tiers. Three stages of growth. Rooted in the brand, rising in reach, radiant with truth — the dandelion in motion.",
+    "tiers": [
+      { "cardClass": "tier-standard", "iconClass": "ti-rooted", "emoji": "🌱", "name": "Rooted", "label": "New affiliates", "pct": "10", "desc": "Grounded in the brand, building foundation. Full swipe copy, graphics, and dashboard from day one." },
+      { "cardClass": "tier-featured", "iconClass": "ti-rising", "emoji": "🔥", "name": "Rising", "label": "10+ sales / month", "pct": "15", "desc": "Energy building, reach expanding. Unlocked automatically. Leaderboard bonuses begin here." },
+      { "cardClass": "tier-standard", "iconClass": "ti-radiant", "emoji": "✦", "name": "Radiant", "label": "Top earners", "pct": "20", "desc": "Full display. Truth radiating outward to all. Early access, cash bonuses, co-marketing opportunities." }
+    ],
+    "ctaLabel": "Apply to Become a Phook Partner",
+    "ctaHref": "#contact"
+  },
+  "newsletter": {
+    "label": "The Weekly Phook Drop",
+    "title": "One truth. One teaching. One offer.",
+    "body": "Every week — a breath of honest wisdom straight to your inbox. No fluff. No filler. Just the phook you need.",
+    "emailPlaceholder": "your@email.com",
+    "subscribeBtnLabel": "Subscribe Free",
+    "corporateLabel": "Corporate Enquiries",
+    "corporateBody": "For Phook the Drama packages, team workshops, and speaking engagements.",
+    "corporateEmail": "hello@phooktheory.com",
+    "affiliateLabel": "Affiliate Applications",
+    "affiliateBody": "Start your Rooted journey. Apply to the Phook Partners network."
+  },
+  "footer": {
+    "tagline": "Balanced Wisdom · Modern Truth",
+    "quote": "\"Truth has breath. This is it.\"",
+    "columns": [
+      {
+        "heading": "Brand",
+        "links": [
+          { "label": "About", "href": "#about" },
+          { "label": "Teachings", "href": "#teachings" },
+          { "label": "The Series", "href": "#series" },
+          { "label": "The App", "href": "#app" }
+        ]
+      },
+      {
+        "heading": "Teachings",
+        "links": [
+          { "label": "The Phook Principles", "href": "#principles" },
+          { "label": "Crystal Phook Clearing", "href": "#crystal" },
+          { "label": "Phook the Drama", "href": "#drama" },
+          { "label": "eBook Shop", "href": "#shop" }
+        ]
+      },
+      {
+        "heading": "Partners",
+        "links": [
+          { "label": "Affiliate Programme", "href": "#affiliate" },
+          { "label": "Corporate", "href": "#contact" },
+          { "label": "Speaking", "href": "#contact" },
+          { "label": "Press", "href": "#contact" }
+        ]
+      }
+    ],
+    "copyright": "© 2026 Phook Theory. All rights reserved.",
+    "socialLinks": [
+      { "label": "Instagram", "href": "#" },
+      { "label": "TikTok", "href": "#" },
+      { "label": "YouTube", "href": "#" },
+      { "label": "Podcast", "href": "#" }
+    ],
+    "legal": "Privacy · Terms"
+  }
+}
