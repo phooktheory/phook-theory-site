@@ -1,6 +1,8 @@
 backend:
   name: github
-  repo: phooktheory/phook-theory-site
+  # IMPORTANT: replace this with your actual GitHub "username/repo-name"
+  # e.g. pamala123/phook-theory-site
+  repo: REPLACE-WITH-your-github-username/phook-theory-site
   branch: main
 
 media_folder: "src/images"

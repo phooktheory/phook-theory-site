@@ -6,15 +6,15 @@
   },
   "nav": {
     "links": [
-      { "label": "About", "href": "#about" },
-      { "label": "Shop", "href": "#shop" },
-      { "label": "Teachings", "href": "#teachings" },
-      { "label": "App", "href": "#app" },
-      { "label": "Affiliate", "href": "#affiliate" },
-      { "label": "Contact", "href": "#contact" }
+      { "label": "About", "href": "/about/" },
+      { "label": "Shop", "href": "/shop/" },
+      { "label": "Teachings", "href": "/teachings/" },
+      { "label": "App", "href": "/app/" },
+      { "label": "Affiliate", "href": "/affiliate/" },
+      { "label": "Contact", "href": "/contact/" }
     ],
     "ctaLabel": "Get the App",
-    "ctaHref": "#app"
+    "ctaHref": "/app/"
   },
   "hero": {
     "eyebrow": "Energy flows where breath goes",

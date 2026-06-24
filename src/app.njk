@@ -1,0 +1,101 @@
+---
+layout: layout.njk
+pageTitle: App
+currentPage: /app/
+---
+
+<!-- ── PALETTE STRIP ── -->
+<div class="palette-strip">
+  <div class="ps" style="background:#0A1A30"></div>
+  <div class="ps" style="background:#152E5E"></div>
+  <div class="ps" style="background:#C4580A"></div>
+  <div class="ps" style="background:#D4920A"></div>
+  <div class="ps" style="background:#6ABAE0"></div>
+  <div class="ps" style="background:#2A9E6A"></div>
+  <div class="ps" style="background:#F0E6D2"></div>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <p class="page-hero-eyebrow">The Phook Theory App</p>
+  <h1 class="page-hero-title">Your daily<br><em>ego check</em></h1>
+  <p class="page-hero-sub">Download the app and let it check your energy — then either deflate the ego or elevate it, with wisdom and breath practices rooted in The Phook Principles.</p>
+</div>
+
+<!-- ── APP OVERVIEW ── -->
+<section class="section app-sec">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="section-label">What's Inside</p>
+        <h2 class="section-title">Everything you need. Daily.</h2>
+        <p class="section-body">The Phook Theory app isn't a meditation timer. It's a mirror. Every morning it asks the question you've been avoiding — and gives you the tools to do something about the answer.</p>
+        <div class="feat-list">
+          {% for feat in site.app.features %}
+          <div class="feat-row"><div class="feat-dot {{ feat.dotClass }}"></div><span>{{ feat.text }}</span></div>
+          {% endfor %}
+        </div>
+        <div class="waitlist-row">
+          <input class="waitlist-input" type="email" placeholder="your@email.com"/>
+          <button class="btn-primary">Join the Waitlist</button>
+        </div>
+        <p style="font-size:0.75rem;color:var(--smoke);opacity:0.55;margin-top:0.75rem">We'll notify you the moment the app is ready to download.</p>
+      </div>
+      <div>
+        <div class="app-mockup">
+          <div class="app-top">
+            <span class="app-logo-text">PHOOK THEORY</span>
+            <span class="ego-badge">Ego: 72%</span>
+          </div>
+          <div class="ego-meter">
+            <div class="meter-label">Today's ego check</div>
+            <div class="meter-bar"><div class="meter-fill"></div></div>
+            <div class="meter-result">You need a Phook ↓</div>
+          </div>
+          <div class="daily-card">
+            <span class="daily-tag">Today's Phook</span>
+            <div class="daily-text">"Stop waiting for permission. The breath is already yours."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section" style="background:var(--cream)">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Three steps. One breath.</h2>
+    <div class="three-col" style="margin-top:2.5rem">
+      <div style="background:white;border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:1rem">📋</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem">Take the Daily Check</div>
+        <p style="font-size:0.8rem;color:var(--smoke);line-height:1.75;opacity:0.75">Answer a short set of honest questions. The app measures where your ego is sitting today — no judgment, just clarity.</p>
+      </div>
+      <div style="background:white;border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:1rem">🌬️</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem">Get Your Phook</div>
+        <p style="font-size:0.8rem;color:var(--smoke);line-height:1.75;opacity:0.75">Receive your daily truth and a targeted breath or journal practice — designed specifically for your score that day.</p>
+      </div>
+      <div style="background:white;border:1px solid var(--border);border-radius:8px;padding:2rem;text-align:center">
+        <div style="font-size:2.5rem;margin-bottom:1rem">✦</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem">Track Your Release</div>
+        <p style="font-size:0.8rem;color:var(--smoke);line-height:1.75;opacity:0.75">Log crystals, journal entries, and practices over time. Watch the pattern of what you hold — and what you finally let go.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WAITLIST CTA ── -->
+<section class="section newsletter">
+  <div class="container" style="text-align:center">
+    <p class="section-label">Coming Soon</p>
+    <h2 class="section-title">Be first to breathe.</h2>
+    <p class="section-body" style="margin:0 auto 2rem">Join the waitlist and get early access when the Phook Theory app launches on iOS and Android.</p>
+    <div class="nl-form" style="justify-content:center;max-width:500px;margin:0 auto">
+      <input class="nl-input" type="email" placeholder="your@email.com"/>
+      <button class="nl-btn">Notify Me</button>
+    </div>
+  </div>
+</section>
